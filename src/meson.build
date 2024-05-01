@@ -86,7 +86,9 @@ vmdef = custom_target('vmdef.lua',
     command : [buildvm, '-m', 'vmdef', '-o', '@OUTPUT@', '@INPUT@']
 )
 
-libluajit = library(lj_libname, ljlib_sources + ljcore_sources + buildvm_headers,
+# was:
+# libluajit = library(lj_libname, ljlib_sources + ljcore_sources + buildvm_headers,
+libluajit = static_library(lj_libname, ljlib_sources + ljcore_sources + buildvm_headers,
     include_directories: luajit_source_dir,
     c_args: lj_defines,
     name_prefix: lj_libprefix,
